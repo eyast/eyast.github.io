@@ -7,8 +7,49 @@ importance: 1
 category: fun
 ---
 
-I explore the problem of constraints satisfaction with mininal, noisy information. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle. The rest of the article provides an overview of the process, some of the challenges faced, and conclusions
+I explore the problem of large space constraints satisfaction with mininal, noisy information - a topic important in Operations Research, Scheduling, etc. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle.
+You can find the code repository [on Github](https://github.com/eyast/PuzzleGenerator), or if you feel like solving this problem your own way, you can find the dataset (scanned copies of the jigsaw puzzle pieces, raw) [here](https://www.kaggle.com/datasets/etaifour/jigsawpuzzle).
 
+## Data Provenance
+### Sourcing
+
+I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide 2000 pieces. They had good ratings online, and they provided a nice web page that allowed me to upload a custom photo and create my custom puzzle. The tool allowed me to pick a custom background color (probably to fill in the empty areas left around the uploaded image). I've use this GUI to select a green-ish color, and proceeded to payment, upon which their customer care department double-checked with me to make sure that I haven't made a mistake.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/puzzle_final/email_screenshot.jpg" title="Concerned customer care = good customer care" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    The people at PuzzlesPrint were concerned. That's good customer care.
+</div>
+
+### Indexing, Digitizing
+I was unaware if those pieces were unique or not, or if they were correctly assemblable. After a bit of pondering, I've decided to index, scan, and organize these pieces. The process was:
+1. Buy a 0.2 mm pen
+2. Buy a 20 drawers cabinet from Bunnings
+3. Add a little sticker to each drawer of that cabinet, starting at 1:100, 101:200, 201:300, etc..
+4. Number each piece sequentially, starting from 1
+5. For each numbered piece, add a horizontal line above. This would then help define the baseline orientiation of the piece, and help resolve future problems (i.e. am I looking at a '9' or an inverting '6')
+6. Once all the pieces were numbered, put a batch of ~50 aligned pieces on the flatbed scanner
+7. Turn the lights off
+8. Scan the pieces
+9. Store them in the appropriate drawer
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/puzzle_final/01_left_box_drawers.jpg" title="I bought a drawer with 20 compartments from my local DIY store." class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    I organized the physical pieces in such a way they were retrievable, and their orientiation would be known.
+</div>
 
 PuzzleSolver 2019 extends Joe Zeimen's original work from 2013. It is a hybrid command-line/GUI application -- input parameters are specified on the command line, status and results are written to the console and to various files in the output directory. There are times when PuzzleSolver will pupup a GUI window -- namely when verifying contours found in the input images, when allowing the user to manually adjust the corner locations of a piece, and in guided solution mode to present suggested piece matches. If a solution can be found, then an image of the solved puzzle is shown in a GUI window.
 
