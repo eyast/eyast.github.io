@@ -24,4 +24,4 @@ I am a student at the Royal Melbourne Institute of Technology, where I'm studyin
 
 I have over 15 years of experience providing hands-on consultation and leadership in the Supply chain and manufacturing sectors. I am passionate about data science, machine learning,  cloud architecture and pedagogy - with a proven track record leading and delivering successful engagements for some of the largest and most complex security and infrastructure problems.
 
-contact: first_letter_of_firstname + lastname + "@me.com"
+contact: first_letter_of_firstname + last_name + "@me.com"
