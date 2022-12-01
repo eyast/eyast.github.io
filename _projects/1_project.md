@@ -1,15 +1,16 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: Satisfying contraints using noisy features
+description: Assembling a unicolor puzzle using computer vision
+img: assets/img/puzzle_final/thumbnail.jpg
 importance: 1
-category: work
+category: fun
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+I explore the problem of constraints satisfaction with mininal, noisy information. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle. The rest of the article provides an overview of the process, some of the challenges faced, and conclusions
+
+
+PuzzleSolver 2019 extends Joe Zeimen's original work from 2013. It is a hybrid command-line/GUI application -- input parameters are specified on the command line, status and results are written to the console and to various files in the output directory. There are times when PuzzleSolver will pupup a GUI window -- namely when verifying contours found in the input images, when allowing the user to manually adjust the corner locations of a piece, and in guided solution mode to present suggested piece matches. If a solution can be found, then an image of the solved puzzle is shown in a GUI window.
 
 To give your project a background in the portfolio page, just add the img tag to the front matter like so:
 
