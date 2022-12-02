@@ -7,6 +7,15 @@ importance: 1
 category: fun
 ---
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/puzzle_final/final.jpg" title="2000 pieces" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    A jigsaw puzzle composed of a single color, assembled with the help of Computer Vision to detect and describe edges, and find similarities amongst them. This was originally a 2000 pieces puzzle but I've lost a piece.
+</div>
+
 I explore the problem of large space constraints satisfaction with mininal, noisy information - a topic important in Operations Research, Scheduling, etc. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle.
 You can find the code repository [on Github](https://github.com/eyast/PuzzleGenerator), or if you feel like solving this problem your own way, you can find the dataset (scanned copies of the jigsaw puzzle pieces, raw) [here](https://www.kaggle.com/datasets/etaifour/jigsawpuzzle).
 
@@ -32,91 +41,35 @@ I was unaware if those pieces were unique or not, or if they were correctly asse
 4. Number each piece sequentially, starting from 1
 5. For each numbered piece, add a horizontal line above. This would then help define the baseline orientiation of the piece, and help resolve future problems (i.e. am I looking at a '9' or an inverting '6')
 6. Once all the pieces were numbered, put a batch of ~50 aligned pieces on the flatbed scanner
-7. Turn the lights off
-8. Scan the pieces
-9. Store them in the appropriate drawer
+7. Turn the lights off - you want to only rely on the flatbed scanner's light source and not the ambient light in the room, since you only want the surface to be scanned (and not the depth of each puzzle piece)
+8. Scan the pieces - single channel BW
+9. Store the physical pieces in the appropriate drawer
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/puzzle_final/01_left_box_drawers.jpg" title="I bought a drawer with 20 compartments from my local DIY store." class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/puzzle_final/02_scanning.jpg" title="scanning the pieces on a flatbed scanner, in a dark room." class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/puzzle_final/03_results.jpg" title="The results of the scan." class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    I organized the physical pieces in such a way they were retrievable, and their orientiation would be known.
+    I organized the physical pieces in such a way they were retrievable, and their orientiation would be known. Having 2000 pieces spread in 20 drawers made me appreciate the 'size' and 'size on disk' properties of a file system - but that's another story for another day.
 </div>
 
-PuzzleSolver 2019 extends Joe Zeimen's original work from 2013. It is a hybrid command-line/GUI application -- input parameters are specified on the command line, status and results are written to the console and to various files in the output directory. There are times when PuzzleSolver will pupup a GUI window -- namely when verifying contours found in the input images, when allowing the user to manually adjust the corner locations of a piece, and in guided solution mode to present suggested piece matches. If a solution can be found, then an image of the solved puzzle is shown in a GUI window.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+With this done I now had few JPGs of the 2000 pieces, and my task now was to identify the pieces, and 'glue them' together.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/puzzle_final/04_scanned_results.jpg" title="scanned results" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
 </div>
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Experimenting
+### 1. Finding pieces on a sheet of paper
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
+As soon as I was done from the tedious task of indexing, scanning, and storing all those pieces, it was time to start the real work. My thought process at this stage was not very clear and I knew the first step I had to do was to find the puzzle pieces. To do this, I opted to leverage OpenCV's existing libraries.
