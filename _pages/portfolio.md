@@ -1,8 +1,8 @@
 ---
 layout: page
-title: portfolio
+title: Portfolio
 permalink: /projects/
-description: The collection of projects I have worked on, over the years
+description: 
 nav: true
 nav_order: 2
 display_categories: [work, fun]
