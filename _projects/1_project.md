@@ -22,8 +22,7 @@ You can find the code repository [on Github](https://github.com/eyast/PuzzleGene
 ## Data Provenance
 ### Sourcing
 
-I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide that size. They had good ratings online, and they provided a nice web page tool which allowed me to pick a custom background color and add a photo. Sinxe my customizarions
-were very scarce, their customer care department reached out to make sure that I haven't made a mistake.
+I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide that size. They had good ratings online, and they provided a nice web page tool which allowed me to pick a custom background color and add a photo. Since my customisations were very scarce, their customer care department reached out to make sure that I haven't made a mistake.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -74,3 +73,5 @@ With this done I now had few JPGs of the 2000 pieces, and my task now was to ide
 ### 1. Finding pieces on a sheet of paper
 
 As soon as I was done from the tedious task of indexing, scanning, and storing all those pieces, it was time to start the real work. My thought process at this stage was not very clear and I knew the first step I had to do was to find the puzzle pieces. To do this, I opted to leverage OpenCV's existing libraries.
+
+This included at the very beginning, blurring each image to remove unnecessary noise. And then using the threshold function to draw. Explicit. Black and white areas that represent pieces of puzzles versus background.I had originally indexed each piece by writing its sequence number. Therefore this created a lot of connected components in open CV. To be able to differentiate the pieces from the noise, I decided to use Scikit learn K-means Clustering function with two clusters centroids:Large clusters versus the noisy small clusters.
