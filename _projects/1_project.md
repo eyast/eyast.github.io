@@ -22,7 +22,8 @@ You can find the code repository [on Github](https://github.com/eyast/PuzzleGene
 ## Data Provenance
 ### Sourcing
 
-I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide 2000 pieces. They had good ratings online, and they provided a nice web page that allowed me to upload a custom photo and create my custom puzzle. The tool allowed me to pick a custom background color (probably to fill in the empty areas left around the uploaded image). I've use this GUI to select a green-ish color, and proceeded to payment, upon which their customer care department double-checked with me to make sure that I haven't made a mistake.
+I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide that size. They had good ratings online, and they provided a nice web page tool which allowed me to pick a custom background color and add a photo. Sinxe my customizarions
+were very scarce, their customer care department reached out to make sure that I haven't made a mistake.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
