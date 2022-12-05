@@ -19,9 +19,6 @@ category: fun
 I explore the problem of large space constraints satisfaction with mininal, noisy information - a topic important in Operations Research, Scheduling, etc. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle.
 You can find the code repository [on Github](https://github.com/eyast/PuzzleGenerator), or if you feel like solving this problem your own way, you can find the dataset (scanned copies of the jigsaw puzzle pieces, raw) [here](https://www.kaggle.com/datasets/etaifour/jigsawpuzzle).
 
-## Data Provenance
-### Sourcing
-
 I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide 2000 pieces. They had good ratings online, and they provided a nice web page that allowed me to upload a custom photo and create my custom puzzle. The tool allowed me to pick a custom background color (probably to fill in the empty areas left around the uploaded image). I've use this GUI to select a green-ish color, and proceeded to payment, upon which their customer care department double-checked with me to make sure that I haven't made a mistake.
 
 <div class="row">
@@ -69,7 +66,21 @@ With this done I now had few JPGs of the 2000 pieces, and my task now was to ide
 </div>
 
 
-## Experimenting
-### 1. Finding pieces on a sheet of paper
+## Assembling
+### 1. Finding pieces on a digitized sheet of paper
 
-As soon as I was done from the tedious task of indexing, scanning, and storing all those pieces, it was time to start the real work. My thought process at this stage was not very clear and I knew the first step I had to do was to find the puzzle pieces. To do this, I opted to leverage OpenCV's existing libraries.
+As soon as I was done from the tedious task of indexing, scanning, and storing all those pieces, it was time to start the real work. My thought process at this stage was not very clear and I knew the first step I had to do was to find the puzzle pieces. To do this, I opted to leverage OpenCV's existing libraries which proved to be useful as it allowed me to blur, find thresholds, and detect contours quickly and easily. I've referred to the documentation and book a textbook from Amazon [Computer Vision: Algorithms and Applications](https://www.amazon.com.au/Computer-Vision-Applications-Richard-Szeliski/dp/3030343715/ref=sr_1_7?keywords=computer+vision&qid=1669959923&qu=eyJxc2MiOiIzLjQ1IiwicXNhIjoiMi4wMCIsInFzcCI6IjEuMDAifQ%3D%3D&sprefix=computer+vision%2Caps%2C311&sr=8-7) which I highly recommend.
+
+Since the scanned copies had noise (dust) and since I had written the sequence of each piece, openCV returned a lot of connected components but I was only interested in the larger ones. To find these large ones, without hardcoding anything, I've relied on `sklearn.cluster.KMeans` with `n_clusters=2` to help me find the 'large components - The resulting bounding box allowed me to divide this view into smaller chunks.
+
+### Assembling
+
+To assemble, the process was to :
+1. Find large components on each sheet of paper using `cv2.connectedComponents` and using this information to cut a bounding box
+2. Draw individual contours in a new numpy array using  `cv2.drawContours`
+3. Look for the value closest to the array's corners, to determine the piece's corners. This populated the list of edges quickly, but incorrectly
+4. Build a GUI using OpenCV that allowed me to reposition the location of the corners
+5. Codify Top, Right, Down, Left into 0, 1, 2, 3 and rotations of 90, 180, 270 (clockwise) to 0, 1, 2
+6. Cut each piece into 4 sides, and rotate the sides *n* degrees to have them all parallel to a horizontal line using `sympy.geometry.geo` 
+
+
