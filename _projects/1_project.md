@@ -19,9 +19,6 @@ category: fun
 I explore the problem of large space constraints satisfaction with mininal, noisy information - a topic important in Operations Research, Scheduling, etc. To test some ideas on an application, I have decided to build a program that uses computer vision techniques to solve jigsaw puzzles using only the shapes of the edges. I have also always thought it would be very cool to display a single color Jigsaw puzzle.
 You can find the code repository [on Github](https://github.com/eyast/PuzzleGenerator), or if you feel like solving this problem your own way, you can find the dataset (scanned copies of the jigsaw puzzle pieces, raw) [here](https://www.kaggle.com/datasets/etaifour/jigsawpuzzle).
 
-<<<<<<< HEAD
-I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide 2000 pieces. They had good ratings online, and they provided a nice web page that allowed me to upload a custom photo and create my custom puzzle. The tool allowed me to pick a custom background color (probably to fill in the empty areas left around the uploaded image). I've use this GUI to select a green-ish color, and proceeded to payment, upon which their customer care department double-checked with me to make sure that I haven't made a mistake.
-=======
 ## Data Provenance
 ### Sourcing
 
@@ -89,11 +86,3 @@ To assemble, the process was to :
 4. Build a GUI using OpenCV that allowed me to reposition the location of the corners
 5. Codify Top, Right, Down, Left into 0, 1, 2, 3 and rotations of 90, 180, 270 (clockwise) to 0, 1, 2
 6. Cut each piece into 4 sides, and rotate the sides *n* degrees to have them all parallel to a horizontal line using `sympy.geometry.geo` 
-
-
-<<<<<<< HEAD
-=======
-As soon as I was done from the tedious task of indexing, scanning, and storing all those pieces, it was time to start the real work. My thought process at this stage was not very clear and I knew the first step I had to do was to find the puzzle pieces. To do this, I opted to leverage OpenCV's existing libraries.
-
-This included blurring each image to remove unnecessary noise and using the threshold function to determine explicit Black and white areas that represent pieces of puzzles versus background noise.I had originally indexed each piece by writing its sequence number. Therefore this created a lot of connected components in open CV. To be able to differentiate the pieces from the noise, I decided to use Scikit learn K-means Clustering function with two clusters centroids:Large clusters versus the noisy small clusters.
->>>>>>> 8f0d1d708cbbe8b8e4d0628faef097ff988f0701
