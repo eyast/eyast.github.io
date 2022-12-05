@@ -1,5 +1,15 @@
 ---
 layout: page
+title: FinRL-Meta
+description: I maintain FinRL-Meta, a Data-Driven Metaverse for Financial Reinforcement Learning. 
+img: assets/img/finrl-meta.png
+redirect: https://github.com/AI4Finance-Foundation/FinRL-Meta
+importance: 2
+category: work
+---
+
+---
+layout: page
 title: FinRL
 description: representatoin of Financial Markets as Reinforcement Learning environments
 img: assets/img/3.jpg
