@@ -23,7 +23,6 @@ You can find the code repository [on Github](https://github.com/eyast/PuzzleGene
 ### Sourcing
 
 I've decided to purchase a 2000 pieces custom Jigsaw puzzle, from the first online vendor I could find who could provide that size. They had good ratings online, and they provided a nice web page tool which allowed me to pick a custom background color and add a photo. Since my customisations were very scarce, their customer care department reached out to make sure that I haven't made a mistake.
->>>>>>> 8f0d1d708cbbe8b8e4d0628faef097ff988f0701
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
