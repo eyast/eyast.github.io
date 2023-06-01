@@ -30,17 +30,14 @@ From a high level perspective, the application is actually two executables: code
 
 {% mermaid %}
 sequenceDiagram
-    box rgb(240,240,240) Jetson
+
     participant Webcam
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
     participant FastAPI
-    end
-    box  rgb(240,240,240) UnityClient
     participant Unity
-    end
     loop everyFrame
     Unity->>FastAPI:If there's a human in the Frame, what's the position of their head in 3D space?
     FastAPI->>+Webcam: Take an image
