@@ -26,7 +26,7 @@ The core of this app revolves around harnessing the power of computer vision and
 
 Once the 2D body position is translated into a 3D representation, the app seamlessly transfers the data to a rendering software - in my case leveraging an existing game design framework (Unity and C#). Unity takes the 3D points representing the location of the user's head in the living room and utilizes them to recreate an immersive 3D environment. It meticulously constructs a virtual space that mirrors your physical surroundings, accounting for depth, perspective, and spatial relationships. With careful attention to detail, the software renders this virtual environment, transforming it into a captivating visual display that can be seamlessly projected onto your living room TV. As a result, the user is transported into a mesmerizing realm where the boundaries between reality and the virtual world dissolve, providing an unparalleled and truly immersive home entertainment experience.
 
-From a high level perspective, the application is actually two executables: code running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The downstream client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera.
+From a high level perspective, the application is composed of two executables: a docker container running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The  client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera and render a scene.
 
 {% mermaid %}
 sequenceDiagram
@@ -55,8 +55,6 @@ sequenceDiagram
     end
 
 {% endmermaid %}
-
-flowing text.
 
 ## Components
 
@@ -90,6 +88,15 @@ In addition to the power supply requirements, it is important to note that the s
 #### NVidia Hello World repository
 I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works, eager to witness the possibilities firsthand. With anticipation, I cloned the "hello world" repository, embracing the excitement of diving into uncharted territory. Running one of the built-in networks, PoseNet, I eagerly awaited the results, breathless with anticipation. As the virtual scene unfolded before my eyes, a surge of wonder and amazement engulfed me. The captivating visualization offered a mere glimpse into the immense potential of this project, fueling my drive to explore further and push the boundaries of what could be achieved. This initial foray served as a powerful catalyst, propelling me into an enchanting realm of immersive possibilities that would redefine my home entertainment experience.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/PoseNet.jpg" title="PoseNet" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Running out-of-the-box PoseNet to see what the Nvidia Jetaon Nano can do. Pretty cool.
+</div>
+
 #### Setting up SSH for vscode remote + github auth
 
 WIP.
@@ -116,6 +123,15 @@ The first step was to create a grid that includes 1x1 squares, where the grid's 
 </div>
 
 To gather diverse and generalized data specific to myself, I adopted a comprehensive approach. I consciously varied my attire throughout the day, accounting for different lighting conditions as well. While capturing the images, I made an effort to maintain a steady posture; however, I allowed myself some leeway to enjoy music, which may have resulted in slight head movements. This meticulous process was my attempt to collect a broad range of data points, conditioned to a single individual—myself. By incorporating these variations, the dataset encompasses a realistic representation of different scenarios and conditions, enabling the network to generalize and adapt to varying circumstances.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/RoomLayout.jpg" title="Origin Point in the room" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    I set the room corner as the origin point - in retrospect, I should have used the Webcam as the origin point to make my code more reusable. This diagram shows a sample spot in the room and how that location is interpreted.
+</div>
 
 #### Calculating features
 
