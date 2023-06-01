@@ -26,26 +26,7 @@ The core of this app revolves around harnessing the power of computer vision and
 
 Once the 2D body position is translated into a 3D representation, the app seamlessly transfers the data to a rendering software - in my case leveraging an existing game design framework (Unity and C#). Unity takes the 3D points representing the location of the user's head in the living room and utilizes them to recreate an immersive 3D environment. It meticulously constructs a virtual space that mirrors your physical surroundings, accounting for depth, perspective, and spatial relationships. With careful attention to detail, the software renders this virtual environment, transforming it into a captivating visual display that can be seamlessly projected onto your living room TV. As a result, the user is transported into a mesmerizing realm where the boundaries between reality and the virtual world dissolve, providing an unparalleled and truly immersive home entertainment experience.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3ddisplay/Solution_Overview.jpg" title="Application Architecture - 30'000 feet view." class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    From a high level perspective, the application is actually two executables: code running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The downstream client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera.
-</div>
-
-test1:
-
-{% mermaid %}
-sequenceDiagram
-    participant John
-    participant Alice
-    Alice->>John: Hello John, how are you?
-    John-->>Alice: Great!
-{% endmermaid %}
-
-test2:
+From a high level perspective, the application is actually two executables: code running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The downstream client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera.
 
 {% mermaid %}
 sequenceDiagram
@@ -56,13 +37,16 @@ sequenceDiagram
     participant KalmanFilter
     participant JetsonServer
     participant Unity
+    autonumber
     Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
-    JetsonServer->>Webcam: Take an image
-    Webcam->> JetsonServer: Image returned.
+    generate_image
+        JetsonServer->>Webcam: Take an image
+        Webcam->> JetsonServer: Image returned.
+    end
     JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
-    PoseNet->>JetsonServer: raw_data returned.
+    PoseNet->>JetsonServer: Raw_data returned.
     JetsonServer->>FeatureCreator: What are the features in this raw data point?
-    FeatureCreator->>JetsonServer: features returned.
+    FeatureCreator->>JetsonServer: Features returned.
     JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
     CustomNet->>JetsonServer: Location in 3D space returned.
     JetsonServer->>KalmanFilter: Filter this noisy data
