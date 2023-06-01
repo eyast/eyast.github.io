@@ -30,19 +30,21 @@ From a high level perspective, the application is actually two executables: code
 
 {% mermaid %}
 sequenceDiagram
+    box gray Jetson
     participant Webcam
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
     participant JetsonServer
+    end
+    box blue Unity
     participant Unity
+    end
     autonumber
     Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
-    generate_image
-        JetsonServer->>Webcam: Take an image
-        Webcam->> JetsonServer: Image returned.
-    end
+    JetsonServer->>Webcam: Take an image
+    Webcam->> JetsonServer: Image returned.
     JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
     PoseNet->>JetsonServer: Raw_data returned.
     JetsonServer->>FeatureCreator: What are the features in this raw data point?
