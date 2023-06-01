@@ -39,7 +39,7 @@ test1:
 
 {% mermaid %}
 sequenceDiagram
-    participant John
+    participant Webcam
     participant Alice
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
@@ -53,25 +53,23 @@ sequenceDiagram
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
+    participant KalmanFilter
     participant JetsonServer
     participant Unity
-    articipand TVDisplay
-    autonumber
-    loop EachFrameRefresh
-        Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
-        JetsonServer->>Webcam: Take an image
-        Webcam->> JetsonServer: Image returned.
-        JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
-        PoseNet->>JetsonServer: raw_data returned.
-        JetsonServer->>FeatureCreator: What are the features in this raw data point?
-        FeatureCreator->>JetsonServer: features returned.
-        JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
-        CustomNet->>JetsonServer: Location in 3D space returned.
-        JetsonServer->>KalmanFilter: Filter this noisy data
-        KalmanFilterJetsonServer: Filtered location returned.
-        JetsonServer->>Unity: 3D location of camera returned in JSON.
-        Unity->>Unity: Modify the scene according to 3D location.
-        Unity->>Unity: Render the scene.
+    Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
+    JetsonServer->>Webcam: Take an image
+    Webcam->> JetsonServer: Image returned.
+    JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
+    PoseNet->>JetsonServer: raw_data returned.
+    JetsonServer->>FeatureCreator: What are the features in this raw data point?
+    FeatureCreator->>JetsonServer: features returned.
+    JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
+    CustomNet->>JetsonServer: Location in 3D space returned.
+    JetsonServer->>KalmanFilter: Filter this noisy data
+    KalmanFilterJetsonServer: Filtered location returned.
+    JetsonServer->>Unity: 3D location of camera returned in JSON.
+    Unity->>Unity: Modify the scene according to 3D location.
+    Unity->>Unity: Render the scene.
 {% endmermaid %}
 
 flowing text.
