@@ -30,18 +30,13 @@ From a high level perspective, the application is actually two executables: code
 
 {% mermaid %}
 sequenceDiagram
-    box Jetson
     participant Webcam
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
     participant JetsonServer
-    end
-    box UnityApp
     participant Unity
-    end
-    autonumber
     note right of Unity: Unity calls JetsonServer.
     loop GetFrame
         Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
