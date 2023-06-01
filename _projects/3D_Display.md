@@ -41,8 +41,8 @@ sequenceDiagram
     loop GetFrame
         Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
         rect rgb(200, 200, 200)
-        JetsonServer->>Webcam: Take an image
-        Webcam->> JetsonServer: Image returned.
+        JetsonServer->>+Webcam: Take an image
+        Webcam->>-JetsonServer: Image returned.
         end
         rect rgb(200, 200, 200)
         JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
