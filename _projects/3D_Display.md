@@ -43,6 +43,153 @@ sequenceDiagram
     John-->>Alice: Great!
 {% endmermaid %}
 
+{% blockdiag %}
+blockdiag {
+   A -> B -> C -> D;
+   A -> E -> F -> G;
+}
+{% endblockdiag %}
+
+{% seqdiag %}
+seqdiag {
+  browser  -> webserver [label = "GET /index.html"];
+  browser <-- webserver;
+  browser  -> webserver [label = "POST /blog/comment"];
+              webserver  -> database [label = "INSERT comment"];
+              webserver <-- database;
+  browser <-- webserver;
+}
+{% endseqdiag %}
+
+{% erd %}
+[Person]
+*name
+height
+weight
+`birth date`
++birth_place_id
+
+[`Birth Place`]
+*id
+`birth city`
+'birth state'
+"birth country"
+
+Person *--1 `Birth Place`
+{% enderd %}
+
+{% graphviz %}
+digraph {
+  node [shape=circle, style=filled];
+  S [fillcolor=green];
+  A [fillcolor=yellow];
+  B [fillcolor=yellow];
+  C [fillcolor=yellow];
+  D [shape=doublecircle, fillcolor=green];
+  S -> A [label=a];
+  S -> B [label=b];
+  A -> D [label=c];
+  B -> D [label=d];
+}
+{% endgraphviz %}
+
+{% nomnoml %}
+[Pirate|eyeCount: Int|raid();pillage()|
+  [beard]--[parrot]
+  [beard]-:>[foul mouth]
+]
+
+[<abstract>Marauder]<:--[Pirate]
+[Pirate]- 0..7[mischief]
+[jollyness]->[Pirate]
+[jollyness]->[rum]
+[jollyness]->[singing]
+[Pirate]-> *[rum|tastiness: Int|swig()]
+[Pirate]->[singing]
+[singing]<->[rum]
+
+[<start>st]->[<state>plunder]
+[plunder]->[<choice>more loot]
+[more loot]->[st]
+[more loot] no ->[<end>e]
+
+[<actor>Sailor] - [<usecase>shiver me;timbers]
+{% endnomnoml %}
+
+
+{% plantuml %}
+@startuml
+class Car
+
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+
+@enduml
+{% endplantuml %}
+
+{% smcat %}
+initial,
+"tape player off",
+"tape player on" {
+  stopped => playing : play;
+  playing => stopped : stop;
+  playing => paused  : pause;
+  paused  => playing : pause;
+  paused  => stopped : stop;
+};
+
+initial           => "tape player off";
+"tape player off" => stopped           : power;
+"tape player on"  => "tape player off" : power;
+{% endsmcat %}
+
+{% svgbob %}
+                           .--->  F
+  A       B      C  D     /
+  *-------*-----*---*----*----->  E
+           \            ^ \
+            v          /   '--->  G
+             B --> C -'
+{% endsvgbob %}
+
+{% syntrax %}
+indentstack(10,
+  line(opt('-'), choice('0', line('1-9', loop(None, '0-9'))),
+    opt('.', loop('0-9', None))),
+
+  line(opt(choice('e', 'E'), choice(None, '+', '-'), loop('0-9', None)))
+)
+{% endsyntrax %}
+
+{% vegalite %}
+{
+  "": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "ordinal"},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}
+{% endvegalite %}
+
+{% wavedrom %}
+{signal: [
+  {name: 'clk', wave: 'p.....|...'},
+  {name: 'dat', wave: 'x.345x|=.x', data: ['head', 'body', 'tail', 'data']},
+  {name: 'req', wave: '0.1..0|1.0'},
+  {name: 'ack', wave: '1.....|01.'}
+]}
+{% endwavedrom %}
+
 ## Components
 
 To ensure a streamlined and secure setup, the solution incorporates 3D printed parts that play a crucial role in organizing and securing the components. These custom-designed parts are instrumental in creating a tidy and fixed arrangement, ensuring that each element fits seamlessly into the overall structure. The camera, a vital component of the system, is securely held in place, guaranteeing its stability and eliminating any unintended movements during operation.
