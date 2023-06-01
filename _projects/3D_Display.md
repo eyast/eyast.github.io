@@ -59,9 +59,9 @@ When it came to the 3D component, I enthusiastically delved into the creative pr
     Chassis for the Logicom C920 webcam. Fusion render and 3D print displayed.
 </div>
 
-### Jeston Nano
+### Building for the Jeston Nano
 
-#### Hello World
+#### NVidia Hello World repository
 I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works, eager to witness the possibilities firsthand. With anticipation, I cloned the "hello world" repository, embracing the excitement of diving into uncharted territory. Running one of the built-in networks, PoseNet, I eagerly awaited the results, breathless with anticipation. As the virtual scene unfolded before my eyes, a surge of wonder and amazement engulfed me. The captivating visualization offered a mere glimpse into the immense potential of this project, fueling my drive to explore further and push the boundaries of what could be achieved. This initial foray served as a powerful catalyst, propelling me into an enchanting realm of immersive possibilities that would redefine my home entertainment experience.
 
 #### Setting up SSH for vscode remote + github auth
