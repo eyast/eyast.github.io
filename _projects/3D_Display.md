@@ -36,34 +36,34 @@ sequenceDiagram
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
-    participant JetsonServer
+    participant FastAPI
     end
     box  rgb(240,240,240) UnityClient
     participant Unity
     end
     loop everyFrame
-    Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
+    Unity->>FastAPI:If there's a human in the Frame, what's the position of their head in 3D space?
     rect rgb(250,250,250)
-    JetsonServer->>+Webcam: Take an image
-    Webcam->>-JetsonServer: Image returned.
+    FastAPI->>+Webcam: Take an image
+    Webcam->>-FastAPI: Image returned.
     end
     rect rgb(250,250,250)
-    JetsonServer->>+PoseNet: Where are the Body Pose KeyPoints?
-    PoseNet->>-JetsonServer: Raw_data returned.
+    FastAPI->>+PoseNet: Where are the Body Pose KeyPoints?
+    PoseNet->>-FastAPI: Raw_data returned.
     end
     rect rgb(250,250,250)
-    JetsonServer->>+FeatureCreator: What are the features in this raw data point?
-    FeatureCreator->>-JetsonServer: Features returned.
+    FastAPI->>+FeatureCreator: What are the features in this raw data point?
+    FeatureCreator->>-FastAPI: Features returned.
     end
     rect rgb(250,250,250)
-    JetsonServer->>+CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
-    CustomNet->>-JetsonServer: Location in 3D space returned.
+    FastAPI->>+CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
+    CustomNet->>-FastAPI: Location in 3D space returned.
     end
     rect rgb(250,250,250)
-    JetsonServer->>+KalmanFilter: Filter this noisy data
-    KalmanFilter->>-JetsonServer: Filtered location returned.
+    FastAPI->>+KalmanFilter: Filter this noisy data
+    KalmanFilter->>-FastAPI: Filtered location returned.
     end
-    JetsonServer->>Unity: 3D location of camera returned in JSON.
+    FastAPI->>Unity: 3D location of camera returned in JSON.
     Unity->>Unity: Modify the scene according to 3D location.
     Unity->>Unity: Render the scene.
     end
