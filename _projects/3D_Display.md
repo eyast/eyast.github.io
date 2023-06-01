@@ -16,7 +16,7 @@ category: fun
     A jigsaw puzzle composed of a single color, assembled with the help of Computer Vision to detect and describe edges, and find similarities amongst them. This was originally a 2000 pieces puzzle but I've lost a piece.
 </div>
 
-PS: Co-authored by ChatGPT.
+PS: Co-authored by ChatGPT (hence, very wordy).
 
 # Project Description
 
@@ -58,6 +58,29 @@ When it came to the 3D component, I enthusiastically delved into the creative pr
 <div class="caption">
     Chassis for the Logicom C920 webcam. Fusion render and 3D print displayed.
 </div>
+
+### Jeston Nano
+
+#### Hello World
+I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works, eager to witness the possibilities firsthand. With anticipation, I cloned the "hello world" repository, embracing the excitement of diving into uncharted territory. Running one of the built-in networks, PoseNet, I eagerly awaited the results, breathless with anticipation. As the virtual scene unfolded before my eyes, a surge of wonder and amazement engulfed me. The captivating visualization offered a mere glimpse into the immense potential of this project, fueling my drive to explore further and push the boundaries of what could be achieved. This initial foray served as a powerful catalyst, propelling me into an enchanting realm of immersive possibilities that would redefine my home entertainment experience.
+
+#### Setting up SSH for vscode remote + github auth
+
+#### Creating a new DockerFile to install FastAPI instead of Flask
+
+#### Collecting training data
+
+#### Building a custom Neural Network to map 2d to 3D
+
+#### Overfitting and experimenting with different network architectures
+
+#### Building a Kalman Filter with Copilot
+
+#### Putting this to the test on an inference point
+
+#### Creating a decoupled streaming architecture (latency problem)
+
+
 
 
 # Conclusion 
