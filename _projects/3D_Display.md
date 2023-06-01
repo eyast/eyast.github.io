@@ -99,6 +99,8 @@ I built my work on the excellent Hello World Nvidia [repository](https://github.
 
 #### Setting up SSH for vscode remote + github auth
 
+WIP.
+
 #### Creating a new DockerFile to install FastAPI instead of Flask
 
 To streamline the deployment process, I developed a customized Dockerfile based on the original Nvidia image, incorporating essential modifications and installing FastAPI. While I initially aimed to leverage VSCode DevContainers for seamless development, I encountered limitations due to the unsupported Python version within the image. However, this obstacle became an opportunity for growth as I delved into the intricacies of debugging, mastering the usage of pdb.set_trace() and remote debugging. This exercise not only enhanced my troubleshooting skills but also equipped me with invaluable insights into optimizing and fine-tuning the software environment for optimal performance.
@@ -140,17 +142,27 @@ The features table serves as a structured repository for the calculated features
 
 #### Building a custom Neural Network to map 2d to 3D
 
+WIP.
+
 #### Overfitting and experimenting with different network architectures
+
+WIP.
 
 #### Understanding the infered distribution in comparison to ground truths
 
+WIP.
+
 #### Building a Kalman Filter with Copilot
+
+WIP.
 
 #### Putting this to the test on an inference point
 
+WIP.
+
 #### Creating a decoupled streaming architecture (latency problem)
 
-
+WIP.
 
 
 # Conclusion 
