@@ -43,26 +43,16 @@ sequenceDiagram
     end
     loop everyFrame
     Unity->>FastAPI:If there's a human in the Frame, what's the position of their head in 3D space?
-    rect rgb(250,250,250)
     FastAPI->>+Webcam: Take an image
     Webcam->>-FastAPI: Image returned.
-    end
-    rect rgb(250,250,250)
     FastAPI->>+PoseNet: Where are the Body Pose KeyPoints?
     PoseNet->>-FastAPI: Raw_data returned.
-    end
-    rect rgb(250,250,250)
     FastAPI->>+FeatureCreator: What are the features in this raw data point?
     FeatureCreator->>-FastAPI: Features returned.
-    end
-    rect rgb(250,250,250)
     FastAPI->>+CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
     CustomNet->>-FastAPI: Location in 3D space returned.
-    end
-    rect rgb(250,250,250)
     FastAPI->>+KalmanFilter: Filter this noisy data
     KalmanFilter->>-FastAPI: Filtered location returned.
-    end
     FastAPI->>Unity: 3D location of camera returned in JSON.
     Unity->>Unity: Modify the scene according to 3D location.
     Unity->>Unity: Render the scene.
