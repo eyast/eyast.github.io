@@ -30,13 +30,14 @@ From a high level perspective, the application is actually two executables: code
 
 {% mermaid %}
 sequenceDiagram
-
     participant Webcam
+    box Docker
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
     participant FastAPI
+    end
     participant Unity
     loop everyFrame
     Unity->>FastAPI:If there's a human in the Frame, what's the position of their head in 3D space?
