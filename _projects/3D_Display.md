@@ -47,19 +47,16 @@ sequenceDiagram
         rect rgb(200, 200, 200)
         JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
         PoseNet->>JetsonServer: Raw_data returned.
-        end
-        rect rgb(200, 200, 200)
+
         JetsonServer->>FeatureCreator: What are the features in this raw data point?
         FeatureCreator->>JetsonServer: Features returned.
-        end
-        rect rgb(200, 200, 200)
+
         JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
         CustomNet->>JetsonServer: Location in 3D space returned.
-        end
-        rect rgb(200, 200, 200)
+
         JetsonServer->>KalmanFilter: Filter this noisy data
         KalmanFilter->>JetsonServer: Filtered location returned.
-        end
+
         JetsonServer->>Unity: 3D location of camera returned in JSON.
         Unity->>Unity: Modify the scene according to 3D location.
         Unity->>Unity: Render the scene.
