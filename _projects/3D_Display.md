@@ -30,37 +30,44 @@ From a high level perspective, the application is actually two executables: code
 
 {% mermaid %}
 sequenceDiagram
+    box rgb(240,240,240) Jetson
     participant Webcam
     participant PoseNet
     participant FeatureCreator
     participant CustomNet
     participant KalmanFilter
     participant JetsonServer
-    participant Unity
-    note right of Unity: Unity calls JetsonServer.
-    loop GetFrame
-        Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
-        rect rgb(200, 200, 200)
-        JetsonServer->>+Webcam: Take an image
-        Webcam->>-JetsonServer: Image returned.
-        end
-        rect rgb(200, 200, 200)
-        JetsonServer->>PoseNet: Where are the Body Pose KeyPoints?
-        PoseNet->>JetsonServer: Raw_data returned.
-
-        JetsonServer->>FeatureCreator: What are the features in this raw data point?
-        FeatureCreator->>JetsonServer: Features returned.
-
-        JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
-        CustomNet->>JetsonServer: Location in 3D space returned.
-
-        JetsonServer->>KalmanFilter: Filter this noisy data
-        KalmanFilter->>JetsonServer: Filtered location returned.
-
-        JetsonServer->>Unity: 3D location of camera returned in JSON.
-        Unity->>Unity: Modify the scene according to 3D location.
-        Unity->>Unity: Render the scene.
     end
+    box  rgb(240,240,240) UnityClient
+    participant Unity
+    end
+    loop everyFrame
+    Unity->>JetsonServer:If there's a human in the Frame, what's the position of their head in 3D space?
+    rect rgb(250,250,250)
+    JetsonServer->>+Webcam: Take an image
+    Webcam->>-JetsonServer: Image returned.
+    end
+    rect rgb(250,250,250)
+    JetsonServer->>+PoseNet: Where are the Body Pose KeyPoints?
+    PoseNet->>-JetsonServer: Raw_data returned.
+    end
+    rect rgb(250,250,250)
+    JetsonServer->>+FeatureCreator: What are the features in this raw data point?
+    FeatureCreator->>-JetsonServer: Features returned.
+    end
+    rect rgb(250,250,250)
+    JetsonServer->>+CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
+    CustomNet->>-JetsonServer: Location in 3D space returned.
+    end
+    rect rgb(250,250,250)
+    JetsonServer->>+KalmanFilter: Filter this noisy data
+    KalmanFilter->>-JetsonServer: Filtered location returned.
+    end
+    JetsonServer->>Unity: 3D location of camera returned in JSON.
+    Unity->>Unity: Modify the scene according to 3D location.
+    Unity->>Unity: Render the scene.
+    end
+
 {% endmermaid %}
 
 flowing text.
