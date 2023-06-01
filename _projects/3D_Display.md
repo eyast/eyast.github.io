@@ -93,7 +93,7 @@ To extract meaningful features for my network, I leveraged the 18 Keypoints gene
     </div>
 </div>
 <div class="caption">
-    Sample view of features engineering, showing Raw data. The first 28 columns point to the X, Y location of each individual Body Pose KeyPoint. The last 2 columns show ground truths.
+    Sample view of features engineering, showing first the raw data. The first 28 columns point to the X, Y location of each individual Body Pose KeyPoint. The last 2 columns show ground truths.
 </div>
 
 The features table serves as a structured repository for the calculated features, each measured in absolute pixel values within the permissible range of the webcam. Each row within the table concludes with two ground values representing my precise X and Y position in the physical room. This feature-to-label mapping forms the foundation for training a neural network capable of accurately mapping the 30 extracted features to just two output values. Prior to feeding the data into the neural network, a linear scaling process is applied, transforming the feature values to a normalized range between 0 and 1, and transforming ground values on a scale of [0, 8] and [0, 6] for my X, Y values respectively (the range is based on my living room size, measures in meters). This scaling ensures consistency and optimal performance during the training process, setting the stage for the network to learn and predict the viewer's physical position with enhanced precision.
