@@ -35,6 +35,11 @@ Once the 2D body position is translated into a 3D representation, the app seamle
     From a high level perspective, the application is actually two executables: code running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The downstream client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera.
 </div>
 
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>Bob: Hi Bob
+    Bob->>Alice: Hi Alice
 
 ## Components
 
