@@ -39,7 +39,7 @@ test1:
 
 {% mermaid %}
 sequenceDiagram
-    participant Webcam
+    participant John
     participant Alice
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
@@ -66,7 +66,7 @@ sequenceDiagram
     JetsonServer->>CustomNet: Here's a list of features - Infer the 3D location of the camera/head in the room
     CustomNet->>JetsonServer: Location in 3D space returned.
     JetsonServer->>KalmanFilter: Filter this noisy data
-    KalmanFilterJetsonServer: Filtered location returned.
+    KalmanFilter->>JetsonServer: Filtered location returned.
     JetsonServer->>Unity: 3D location of camera returned in JSON.
     Unity->>Unity: Modify the scene according to 3D location.
     Unity->>Unity: Render the scene.
