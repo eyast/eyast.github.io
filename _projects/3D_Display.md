@@ -38,6 +38,7 @@ sequenceDiagram
     participant FastAPI
     participant Unity
     loop everyFrame
+    autonumber
     Unity->>FastAPI:If there's a human in the Frame, what's the position of their head in 3D space?
     FastAPI->>+Webcam: Take an image
     Webcam->>-FastAPI: Image returned.
