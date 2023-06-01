@@ -49,10 +49,10 @@ When it came to the 3D component, I enthusiastically delved into the creative pr
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/puzzle_final/01_left_box_drawers.jpg" title="I bought a drawer with 20 compartments from my local DIY store." class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/3ddisplay/fusion_cam.jpg" title="Model I created in Fusion to hold the camera steadily on top of the TV." class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/puzzle_final/02_scanning.jpg" title="scanning the pieces on a flatbed scanner, in a dark room." class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/3ddisplay/cam_printed.jpg" title="Printed on Creality S3 Pro v1." class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
