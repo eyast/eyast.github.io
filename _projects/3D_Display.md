@@ -81,6 +81,15 @@ The application I have developed is a user-friendly FastAPI form that collects m
 
 The first step was to create a grid that includes 1x1 squares, where the grid's point of origin is the same as the room's origin. I used good old tape for this practice.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/floor_markers.jpg" title="I put scotch tape markers 1 meter apart in my living room." class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Markers on the floor of the living room, 1 and 0.5 meter apart. These markers let me know where to stand when capturing training data.
+</div>
+
 To gather diverse and generalized data specific to myself, I adopted a comprehensive approach. I consciously varied my attire throughout the day, accounting for different lighting conditions as well. While capturing the images, I made an effort to maintain a steady posture; however, I allowed myself some leeway to enjoy music, which may have resulted in slight head movements. This meticulous process was my attempt to collect a broad range of data points, conditioned to a single individual—myself. By incorporating these variations, the dataset encompasses a realistic representation of different scenarios and conditions, enabling the network to generalize and adapt to varying circumstances.
 
 #### Calculating features
