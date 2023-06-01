@@ -35,6 +35,14 @@ Once the 2D body position is translated into a 3D representation, the app seamle
     From a high level perspective, the application is actually two executables: code running on a Nvidia Jetson Nano that infers the viewer's position in my living room, and serves that to a downstream client as a JSON reply. The downstream client (Unity in this case), queries the API once per Frame Refresh, and uses this information to modify the Scene's camera.
 </div>
 
+{% mermaid %}
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+{% endmermaid %}
+
 ## Components
 
 To ensure a streamlined and secure setup, the solution incorporates 3D printed parts that play a crucial role in organizing and securing the components. These custom-designed parts are instrumental in creating a tidy and fixed arrangement, ensuring that each element fits seamlessly into the overall structure. The camera, a vital component of the system, is securely held in place, guaranteeing its stability and eliminating any unintended movements during operation.
