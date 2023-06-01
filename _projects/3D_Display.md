@@ -36,6 +36,7 @@ Once the 2D body position is translated into a 3D representation, the app seamle
 </div>
 
 test1:
+
 {% mermaid %}
 sequenceDiagram
     participant John
@@ -72,6 +73,8 @@ sequenceDiagram
         Unity->>Unity: Modify the scene according to 3D location.
         Unity->>Unity: Render the scene.
 {% endmermaid %}
+
+flowing text.
 
 ## Components
 
