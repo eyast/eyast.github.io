@@ -38,7 +38,7 @@ sequenceDiagram
     participant KalmanFilter
     participant JetsonServer
     end
-    box Unity
+    box UnityApp
     participant Unity
     end
     autonumber
