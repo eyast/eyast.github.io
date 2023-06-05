@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Mind Blowing 3D display at home
-description: Transforming my Living Room TV into a Mind-blowing 3D
+description: Transforming my Living Room TV into a Mind-blowing 3D display
 img: assets/img/puzzle_final/thumbnail.jpg
 importance: 1
 category: fun
@@ -68,11 +68,12 @@ sequenceDiagram
 
 {% endmermaid %}
 
+
 ## Components
 
-To ensure a streamlined and secure setup, the solution incorporates 3D printed parts that play a crucial role in organizing and securing the components. These custom-designed parts are instrumental in creating a tidy and fixed arrangement, ensuring that each element fits seamlessly into the overall structure. The camera, a vital component of the system, is securely held in place, guaranteeing its stability and eliminating any unintended movements during operation.
+To reduce any downstream error accumulation, I needed first to ensure the camera stays at a fixed point in the room. The first section goes through the lessons I've learnt 3D printing a chassis to hold the webcam and the Nvidia Jetson Nano.
 
-To handle the processing and inference tasks, the solution utilizes a  Nvidia Jetson Nano embedded platform. Running within a Docker container, the Nano hosts a FastAPI server, serving inference capabilities as a REST API. This setup enables seamless communication and interaction with other components of the system. Unity, a popular game development platform, leverages the REST API to access the inference results, allowing for the integration of the captured 3D body position data into the virtual environment.
+To handle the processing and inference tasks, the solution utilizes a Nvidia Jetson Nano embedded platform. Running within a Docker container, the Nano hosts a FastAPI server, serving inference capabilities as a REST API. This setup enables seamless communication and interaction with other components of the system. Unity, a popular game development platform, leverages the REST API to access the inference results, allowing for the integration of the captured 3D body position data into the virtual environment.
 
 The decision to opt for the Nvidia Jetson Nano was driven by the desire to leverage its onboard processing capabilities for running neural networks. This not only streamlines the overall setup but also enhances the system's efficiency by offloading the processing workload from external devices. Additionally, the Nano's versatility allows it to serve a dual purpose by utilizing the same device for rendering the scene on the TV. This integration further enhances the synchronization and fluidity of the overall experience, providing a seamless transition between the captured 3D environment and its projection on the television screen.
 
@@ -161,7 +162,7 @@ To extract meaningful features for my network, I leveraged the 18 Keypoints gene
 The features table serves as a structured repository for the calculated features, each measured in absolute pixel values within the permissible range of the webcam. Each row within the table concludes with two ground values representing my precise X and Y position in the physical room. This feature-to-label mapping forms the foundation for training a neural network capable of accurately mapping the 30 extracted features to just two output values. Prior to feeding the data into the neural network, a linear scaling process is applied, transforming the feature values to a normalized range between 0 and 1, and transforming ground values on a scale of [0, 8] and [0, 6] for my X, Y values respectively (the range is based on my living room size, measures in meters). This scaling ensures consistency and optimal performance during the training process, setting the stage for the network to learn and predict the viewer's physical position with enhanced precision.
 
 
-#### Building a custom Neural Network to map 2d to 3D
+#### Building a custom Neural Network to map 2D to 3D
 
 WIP.
 
