@@ -202,16 +202,19 @@ Determining the architecture of the networks was an interesting exercise, and fe
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/3ddisplay/networkperformance1.png" title="The performance of the Neural Network. This diagram rendered by matplotlib shows my living room (crude format, TV to the left and sofa in the center). the X marks shows where I stood, and the circles show the inference result of my network." class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3ddisplay/networkperformance2.png" title="The network is obviously overfitting - and that's totally OK in my case (I am the only user of this solution after all) But it's worth revisiting at a later stage." class="img-fluid rounded z-depth-1" %}
-    </div>
-        <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3ddisplay/attached.png" title="The network as visualized by Torchviz." class="img-fluid rounded z-depth-1" %}
-    </div>
 </div>
 <div class="caption">
     The custom Neural achieves 0.001 loss. That's 0.1% on a linear scale that ranges [0, 1] in both X and Y axis, scaled down from 8 and 6 meters respectively. This means that the error of 0.1% - once re-scaled - will be 0.8 cm and 0.6 cm respectively.
 </div>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/networkperformance2.png" title="The network is obviously overfitting - and that's totally OK in my case (I am the only user of this solution after all) But it's worth revisiting at a later stage." class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+    <div class="caption">
+    The custom Neural achieves 0.001 loss. That's 0.1% on a linear scale that ranges [0, 1] in both X and Y axis, scaled down from 8 and 6 meters respectively. This means that the error of 0.1% - once re-scaled - will be 0.8 cm and 0.6 cm respectively.
+</div>
+
 
 I counterbalance massive overfitting by creating a Generator on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
 
