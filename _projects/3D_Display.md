@@ -151,7 +151,7 @@ sequenceDiagram
 
 This data will play a pivotal role in constructing a neural network that takes a set of detected Body Pose KeyPoints as input and outputs precise location of the person's head, in 3D space. Given that the application is designed solely for my personal use, I lock the z view to a fixed height of 190 cm (my height).
 
-The first step was to create a grid that includes 1x1 squares, where the grid's point of origin is the same as the room's origin. I used good old tape for this practice. At a later stage, I added markers every 0.5 meters, to increase the capabilities of the Neural Network.
+I had to create a physical grid - on the floor - composed of stickers that are first 1 meters apart (and at a later stage, 50 cms apart), where the grid's point of origin is the same as the room's origin. I used good old tape for this practice.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -162,8 +162,8 @@ The first step was to create a grid that includes 1x1 squares, where the grid's 
     Markers on the floor of the living room, 1 and 0.5 meter apart. These markers let me know where to stand when capturing training data.
 </div>
 
-When visiting a webpage, FastAPI asks me to fill in a form to specify  my physical X and Y coordinates relative to a fictional (0, 0) point (which is simply a corner of the room). 
-When the web form is posted, FastAPI triggers code that takes 50 images consecutively. It then proceeds to extract the body pose keypoints from each image and calculates the corresponding features. These calculated features are then appended to a CSV file, with each row augmented by ground truth label values that represent my actual physical position within the room as entered in the webpage. This comprehensive data collection process enables the creation of a robust dataset, essential for training and refining downstream applications that rely on accurate viewer positioning.
+The collection of training data was pretty simple: I would stand on each of these markers, and visit a webpage published by FastAPI which asked me to specify which marker I was standing on (by means of filling in two text boxes in a webpage). I would enter these values, press a Button, and wait for around 1 minute, during which the camera would take ~50 images of me, calculate features, and store them (in addition to the ground truth labels which I entered in the web page) in a CSV file.
+I now had the data that I will use to build my custom neural network.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -174,8 +174,7 @@ When the web form is posted, FastAPI triggers code that takes 50 images consecut
     The raw data: The first 28 columns point to the X, Y location of each individual Body Pose KeyPoint (nose and left eye only shown). The last 2 columns show ground truths.
 </div>
 
-
-To gather diverse and generalized data specific to myself, I adopted a comprehensive approach. I consciously varied my attire throughout the day, accounting for different lighting conditions as well. While capturing the images, I made an effort to maintain a steady posture; however, I allowed myself some leeway to enjoy music, which may have resulted in slight head movements. This meticulous process was my attempt to collect a broad range of data points, conditioned to a single individual—myself. By incorporating these variations, the dataset encompasses a realistic representation of different scenarios and conditions, enabling the network to generalize and adapt to varying circumstances.
+I took a total of 5500 images, wearing different clothes, moving a little bit while listening to music, and at different times of the day - in an attempt to diversify the data as much as possible. By incorporating these variations, the dataset encompasses a realistic representation of different scenarios and conditions, enabling the network to generalize and adapt to varying circumstances.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
