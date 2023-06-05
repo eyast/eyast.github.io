@@ -71,15 +71,15 @@ sequenceDiagram
 
 ## Components
 
-To reduce any downstream error accumulation, I needed first to ensure the camera stays at a fixed point in the room. The first section goes through the lessons I've learnt 3D printing a chassis to hold the webcam and the Nvidia Jetson Nano.
+To reduce any downstream error accumulation, I needed first to ensure the camera stays at a fixed point in the room. It was critical that nothing static changes position, therefore the first thing I did was creating a chassis that holds the camera firmly at a specific static point, in my case on top of the TV.
 
-To handle the processing and inference tasks, the solution utilizes a Nvidia Jetson Nano embedded platform. Running within a Docker container, the Nano hosts a FastAPI server, serving inference capabilities as a REST API. This setup enables seamless communication and interaction with other components of the system. Unity, a popular game development platform, leverages the REST API to access the inference results, allowing for the integration of the captured 3D body position data into the virtual environment.
+The camera was originally planned to be connected to a Raspberry Pi, but after further consideration and to enable some room to experiment different technologies, the app was built in a Docker container on a NVidia Jetson Nano serving inference data through FastAPI as a REST API. This setup decouples the application components clearly, delineating a responsibility to determine the person's location from rendering a scene. I was hoping to experiment with other technologies, thanks to this decoupling (for example, try to add a new network instead of the built-in, or use another rendering engine such as unreal, etc..). Unity, a popular game development platform, leverages the REST API to access the inference results, allowing for the integration of the captured 3D body position data into the virtual environment.
 
 The decision to opt for the Nvidia Jetson Nano was driven by the desire to leverage its onboard processing capabilities for running neural networks. This not only streamlines the overall setup but also enhances the system's efficiency by offloading the processing workload from external devices. Additionally, the Nano's versatility allows it to serve a dual purpose by utilizing the same device for rendering the scene on the TV. This integration further enhances the synchronization and fluidity of the overall experience, providing a seamless transition between the captured 3D environment and its projection on the television screen.
 
 ### 3D parts
 
-When it came to the 3D component, I enthusiastically delved into the creative process, utilizing the powerful design capabilities of Fusion. Through several iterations and countless hours of refining, I meticulously crafted a bespoke object tailored to perfection. This custom creation serves as the ideal support, elegantly cradling the camera in a secure and immovable position. From conception to execution, the journey of bringing this custom object to life has been a true labor of love, ensuring that every detail is carefully considered to deliver a seamless and captivating experience.
+The Logicom c920 chassis was designed in Autodesk Fusion, in an iterative manner, and printed on a Creality S3 Pro V1. With this chassis, the camera was stable and forced to remain in place.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -93,13 +93,13 @@ When it came to the 3D component, I enthusiastically delved into the creative pr
     Chassis for the Logicom C920 webcam. Fusion render and 3D print displayed.
 </div>
 
-### Building for the Jeston Nano
+### Powering the Nano with an adequate power supply
 
-A note on getting the correct power supply and storage: The Nvidia Jetson Nano relies on a 5V 2A power supply to ensure it receives sufficient power to drive its GPU effectively. Without a suitable power supply, the Nano will decrease the power supply to the GPU, leading to a suboptimal user experience characterized by choppy performance. It is crucial to provide the Nano with the recommended power specifications to enable smooth and uninterrupted GPU functionality.
+A note on getting the correct power supply and storage: The Nvidia Jetson Nano relies on a 5V 2A power supply to ensure it receives sufficient power to drive its GPU effectively. Without a suitable power supply, the Nano will decrease the power supply to the GPU, leading to a suboptimal user experience characterized by choppy performance. It is crucial to provide the Nano with the recommended power specifications to enable smooth and uninterrupted GPU functionality. The [NVidia forums](https://forums.developer.nvidia.com/t/power-supply-considerations-for-jetson-nano-developer-kit/71637) provide a list of recommended power supplies, as well as instructions to configure the Nano to use the external power supply instead of the 5V USB-C path.
 In addition to the power supply requirements, it is important to note that the storage SD card for the Nvidia Jetson Nano should not only have a large capacity, preferably above 32GB, but also be fast. The choice of a fast SD card is crucial as it directly impacts the inference time of the system. A high-speed SD card enables quicker read and write operations, facilitating faster data access and processing, ultimately reducing the time it takes for the Nano to perform inference tasks. Therefore, selecting a storage SD card that combines ample capacity with fast transfer speeds is essential for optimizing the overall performance of the Jetson Nano.
 
 #### NVidia Hello World repository
-I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works, eager to witness the possibilities firsthand. With anticipation, I cloned the "hello world" repository, embracing the excitement of diving into uncharted territory. Running one of the built-in networks, PoseNet, I eagerly awaited the results, breathless with anticipation. As the virtual scene unfolded before my eyes, a surge of wonder and amazement engulfed me. The captivating visualization offered a mere glimpse into the immense potential of this project, fueling my drive to explore further and push the boundaries of what could be achieved. This initial foray served as a powerful catalyst, propelling me into an enchanting realm of immersive possibilities that would redefine my home entertainment experience.
+I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works,. I cloned the "hello world" repository, and ran  `python/examples/posenet.py` .
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
