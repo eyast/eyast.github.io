@@ -112,15 +112,45 @@ I built my work on the excellent Hello World Nvidia [repository](https://github.
 
 #### Setting up SSH for vscode remote + github auth
 
-WIP.
+I configured [SSH to work with Github on the Nano](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 
 #### Creating a new DockerFile to install FastAPI instead of Flask
 
-To streamline the deployment process, I developed a customized Dockerfile based on the original Nvidia image, incorporating essential modifications and installing FastAPI. While I initially aimed to leverage VSCode DevContainers for seamless development, I encountered limitations due to the unsupported Python version within the image. However, this obstacle became an opportunity for growth as I delved into the intricacies of debugging, mastering the usage of pdb.set_trace() and remote debugging. This exercise not only enhanced my troubleshooting skills but also equipped me with invaluable insights into optimizing and fine-tuning the software environment for optimal performance.
+Once the development environment is ready and a test network was ran, I looked at modifying the Dockerfil  incorporating essential modifications and installing FastAPI and some other dependencies instead of Flask. While I initially aimed to leverage VSCode DevContainers for seamless development, I encountered limitations due to the unsupported Python version within the image. However, this obstacle became an opportunity for growth as I delved into the intricacies of debugging, mastering the usage of pdb.set_trace() and remote debugging. This exercise not only enhanced my troubleshooting skills but also equipped me with invaluable insights into optimizing and fine-tuning the software environment for optimal performance.
 
 #### Collecting training data
 
-With the Docker container up and running, the next step in my journey is to focus on building the application that will serve as the foundation for collecting crucial data – training and evaluation data for downstream applications. This data will play a pivotal role in constructing a network that takes a set of detected Body Pose KeyPoints as input and outputs precise x, y, and z coordinates representing the viewer's head. Given that the application is designed solely for my personal use, I embrace the freedom to overfit and lock the z view to a fixed height of 190 cm, aligning with my own height. This tailored approach ensures a customized and accurate representation, elevating the immersive experience to new heights.
+With the Docker container up and running, the next step in my journey was to build the application that will serve as the foundation for collecting training data.
+THe diagram below shows the high level architecture used to collect training data. It's very similar to the previous diagram with few modificatoins:
+- The custom neural network is not a component (yet).
+- There is no Kalman Filtering, since we are not infering.
+- The data is saved to a local CSV File.
+
+{% mermaid %}
+sequenceDiagram
+    participant CSVFile
+    participant Webcam
+    participant PoseNet
+    participant FeatureCreator
+    participant FastAPI
+    participant HumanBeing
+    HumanBeing->>+FastAPI: (GET /training) - Hi, I'd like to get the training web page please
+    FastAPI->>- HumanBeing: Sure, here it is
+    HumanBeing->> HumanBeing: Find where you physically are, in the room, in meters, away from a pre-determine origin point
+    HumanBeing->> FastAPI: (POST /training) - Here's my physical location in meters, aware from a pre-determined origin point
+    FastAPI->>+Webcam: Take an image
+    Webcam->>-FastAPI: Image returned.
+    FastAPI->>+PoseNet: Where are the Body Pose KeyPoints?
+    PoseNet->>-FastAPI: Raw_data returned.
+    FastAPI->>+FeatureCreator: What are the features in this raw data point?
+    FeatureCreator->>-FastAPI: Features returned.
+    FastAPI->> CSVFile: Append an existing CSV file with the features (out of FeatureCreator) and labels (entered by the user)
+    CSVFile ->> CSVFile: update data.
+
+{% endmermaid %}
+
+
+This data will play a pivotal role in constructing a network that takes a set of detected Body Pose KeyPoints as input and outputs precise x, y, and z coordinates representing the viewer's head. Given that the application is designed solely for my personal use, I embrace the freedom to overfit and lock the z view to a fixed height of 190 cm, aligning with my own height. This tailored approach ensures a customized and accurate representation, elevating the immersive experience to new heights.
 
 The application I have developed is a user-friendly FastAPI form that collects my physical X and Y coordinates relative to a fictional (0, 0) point, representing the corner of the room. Upon clicking a button on the web page, the Docker container springs into action, capturing a series of 50 consecutive images. It then proceeds to extract the body pose keypoints from each image and calculates the corresponding features. These calculated features are then appended to a CSV file, with each row augmented by ground truth label values that represent my actual physical position within the room. This comprehensive data collection process enables the creation of a robust dataset, essential for training and refining downstream applications that rely on accurate viewer positioning.
 
