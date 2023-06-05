@@ -1,6 +1,6 @@
 ---
 layout: page
-title: At home 3D display
+title: Mind Blowing 3D display at home
 description: Transforming my Living Room TV into a Mind-blowing 3D
 img: assets/img/puzzle_final/thumbnail.jpg
 importance: 1
@@ -9,11 +9,11 @@ category: fun
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/puzzle_final/final.jpg" title="2000 pieces" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/puzzle_final/final.jpg" title="Custom-made, forced perspective renderer" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    A jigsaw puzzle composed of a single color, assembled with the help of Computer Vision to detect and describe edges, and find similarities amongst them. This was originally a 2000 pieces puzzle but I've lost a piece.
+    A custom made software analyzes my location, and renders a 3D scene epxplicitly for my viewing angle.
 </div>
 
 PS: Co-authored by ChatGPT (hence, very wordy).
@@ -22,7 +22,7 @@ PS: Co-authored by ChatGPT (hence, very wordy).
 
 Amidst the pandemic, many of us adjusted to working from home. In search of a captivating home entertainment experience, I transformed my living room TV into a mesmerizing 3D display. Inspired by the desire for immersion, I started exploring the world of real-time perspective correction. I built an app that tracks me in my living room, and accordingly renders a 3D scene on my TV, for my own viewing, with the correct perspective that matches my position to create an optical illusion.
 
-The core of this app revolves around harnessing the power of computer vision and utilizing a webcam to capture an image, subsequently analyzing it to determine the presence of a human. By leveraging PoseNet and a custom Neural Network built for purpose, the solution can swiftly identify and isolate the human figure within the image. Once the human presence is confirmed, the app goes a step further by extracting the body position, creating an X, Y array in a 2D space (with dimension = webcam max dimensions). This array serves as a crucial piece of data that acts as the foundation for the subsequent transformation into a three-dimensional representation of my position in the room. By mapping this 2D body position to the vast expanse of a virtual 3D space, the app enables an unparalleled sense of immersion by precisely pinpointing the location of the user's head within the living room. Through this extraordinary combination of cutting-edge technology, the app takes home entertainment experiences to an entirely new dimension, blurring the boundaries between the real and virtual worlds.
+The app uses computer vision and a webcam to detect humans, isolate their figures, and extract body positions in a 2D space. This data is then transformed into a three-dimensional representation of the user's position in the room. By mapping the 2D body position to a virtual 3D space, the app provides an immersive experience by accurately locating the user's head within the living room. It combines advanced technology to push the boundaries between the real and virtual worlds, enhancing home entertainment experiences.
 
 Once the 2D body position is translated into a 3D representation, the app seamlessly transfers the data to a rendering software - in my case leveraging an existing game design framework (Unity and C#). Unity takes the 3D points representing the location of the user's head in the living room and utilizes them to recreate an immersive 3D environment. It meticulously constructs a virtual space that mirrors your physical surroundings, accounting for depth, perspective, and spatial relationships. With careful attention to detail, the software renders this virtual environment, transforming it into a captivating visual display that can be seamlessly projected onto your living room TV. As a result, the user is transported into a mesmerizing realm where the boundaries between reality and the virtual world dissolve, providing an unparalleled and truly immersive home entertainment experience.
 
