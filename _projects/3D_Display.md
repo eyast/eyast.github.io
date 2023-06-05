@@ -107,7 +107,7 @@ I built my work on the excellent Hello World Nvidia [repository](https://github.
     </div>
 </div>
 <div class="caption">
-    Running out-of-the-box PoseNet to see what the Nvidia Jetaon Nano can do. Pretty cool.
+    Running out-of-the-box PoseNet to see what the Nvidia Jetson Nano can do. Pretty cool.
 </div>
 
 #### Setting up SSH for vscode remote + github auth
@@ -145,7 +145,6 @@ sequenceDiagram
     FastAPI->>+FeatureCreator: What are the features in this raw data point?
     FeatureCreator->>-FastAPI: Features returned.
     FastAPI->> CSVFile: Append an existing CSV file with the features (out of FeatureCreator) and labels (entered by the user)
-    CSVFile ->> CSVFile: update data.
 
 {% endmermaid %}
 
