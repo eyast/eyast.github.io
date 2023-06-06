@@ -214,6 +214,17 @@ Determining the architecture of the networks was an interesting exercise, and fe
 
 I try to counterbalance massive overfitting by creating a Generator on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/network_perf_individual.png" title="Error at twp rows" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Although generally the network performs well, it fails at specific locations in the room (could it be because of lighting, high angle, or something else?). The areas that were guessed incorrectly by the network (marked with a long connecting line) will require more training data.
+</div>
+
+#### Finding important features - PCA
+
 #### Creating a decoupled streaming architecture (fixing the latency problem)
 
 the application components are very synchronous: Each time a client requests an inference, A whole waterfall process has to run (capture image, extract keypoints, extract features, estimate XYZ location in room) - and this process is CPU bound. When the unity client requests the REST API once per Frame, the code on the Nano quickly crashes after few seconds.
