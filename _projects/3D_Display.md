@@ -162,7 +162,7 @@ I had to create a physical grid - on the floor - composed of stickers that are f
     Markers on the floor of the living room, 1 and 0.5 meter apart. These markers let me know where to stand when capturing training data.
 </div>
 
-The collection of training data was pretty simple: I would stand on each of these markers, and visit a webpage published by FastAPI which asked me to specify which marker I was standing on (by means of filling in two text boxes in a webpage). I would enter these values, press a Button, and wait for around 1 minute, during which the camera would take ~50 images of me, calculate features, and store them (in addition to the ground truth labels which I entered in the web page) in a CSV file.
+The collection of training data was pretty simple: I would stand on each of these markers, and visit a webpage published by FastAPI which asked me to specify which marker I was standing on (by means of filling in two text boxes in a webpage, X and Y distance from the walls respectively). I would enter these values, press a Button, and wait for around 1 minute, during which the camera would take ~50 images of me, calculate features, and store them (in addition to the ground truth labels which I entered in the web page) in a CSV file.
 I now had the data that I will use to build my custom neural network.
 
 <div class="row">
@@ -211,32 +211,43 @@ Determining the architecture of the networks was an interesting exercise, and fe
         {% include figure.html path="assets/img/3ddisplay/networkperformance2.png" title="The network is obviously overfitting - and that's totally OK in my case (I am the only user of this solution after all) But it's worth revisiting at a later stage." class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-    <div class="caption">
-    The custom Neural achieves 0.001 loss. That's 0.1% on a linear scale that ranges [0, 1] in both X and Y axis, scaled down from 8 and 6 meters respectively. This means that the error of 0.1% - once re-scaled - will be 0.8 cm and 0.6 cm respectively.
-</div>
 
+I try to counterbalance massive overfitting by creating a Generator on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
 
-I counterbalance massive overfitting by creating a Generator on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
+#### Creating a decoupled streaming architecture (fixing the latency problem)
 
-#### Overfitting and experimenting with different network architectures
+the application components are very synchronous: Each time a client requests an inference, A whole waterfall process has to run (capture image, extract keypoints, extract features, estimate XYZ location in room) - and this process is CPU bound. When the unity client requests the REST API once per Frame, the code on the Nano quickly crashes after few seconds.
+To resolve this problem, I've decided to decouple request for inference, from inferring the data, by creating a memory buffer, and leveraging [FastAPI's `Background_tasks`](https://fastapi.tiangolo.com/tutorial/background-tasks/). In the future, I might explore the role of other libraries, such as [celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html).
+1. A ConfigStore is a dictionary object that includes a time frequency (in my case, max 20 API calls per second). The ConfigStore has a function `is_it_time_to_process_a_new_photo()` function, that returns False if less than 1/20 seconds have passed, and true otherwise.
 
-WIP.
+The architecture of the application now looks as follows:
 
-#### Understanding the infered distribution in comparison to ground truths
-
-WIP.
+{% mermaid %}
+sequenceDiagram
+    participant PoseNet_Webcam_etc
+    participant MemoryObject
+    participant FastAPI_Background_task
+    participant FastAPI
+    participant Unity
+    Unity->>FastAPI: (GET /) - Hi, I'd like to know the position of the person's head, in 3D
+    FastAPI ->>+ FastAPI_Background_task: Submit a new job to take image/process keyoints/and infer
+    FastAPI_Background_task ->>+ PoseNet_Webcam_etc: Process one image (waterfall process)
+    PoseNet_Webcam_etc ->>- MemoryObject: Update inference with latest human position
+    FastAPI->>+ MemoryObject: I'd like to know the position of the person's head, in 3D
+    MemoryObject ->>- FastAPI: The person is located here
+    FastAPI ->> Unity: You are located here.
+    
+{% endmermaid %}
 
 #### Building a Kalman Filter with Copilot
 
-WIP.
+A problem that started appearing was jittering. The Neural Networks in play are all pixel-accurate, but based their estimates on a single image without necessarily taking into consideration path of motion. Sampling from this inference point at every Frame Refresh results in jittery path and therefore had to be smoothed out. This was an opportunity for me to implement a Kalman Filter, and to use Github copilot Chat for the first time. My mind was blown at how easy it was
 
 #### Putting this to the test on an inference point
 
 WIP.
 
-#### Creating a decoupled streaming architecture (latency problem)
 
-WIP.
 
 
 # Conclusion 
