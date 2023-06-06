@@ -241,7 +241,16 @@ sequenceDiagram
 
 #### Building a Kalman Filter with Copilot
 
-A problem that started appearing was jittering. The Neural Networks in play are all pixel-accurate, but based their estimates on a single image without necessarily taking into consideration path of motion. Sampling from this inference point at every Frame Refresh results in jittery path and therefore had to be smoothed out. This was an opportunity for me to implement a Kalman Filter, and to use Github copilot Chat for the first time. My mind was blown at how easy it was
+A problem that started appearing was jittering. The Neural Networks in play are all pixel-accurate, but based their estimates on a single image without necessarily taking into consideration path of motion. Sampling from this inference point at every Frame Refresh results in jittery path and therefore had to be smoothed out. This was an opportunity for me to implement a Kalman Filter, and to use Github copilot Chat for the first time. My mind was blown at how easy it was to ask for a feature correction, or addition, and the bot would yield code AND explanation.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/copilot.png" title="GitHub copilot at work." class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Chatting with my code, and learning how to build a Kalman Filter.
+</div>
 
 #### Putting this to the test on an inference point
 
