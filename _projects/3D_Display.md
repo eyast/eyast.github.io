@@ -252,13 +252,7 @@ A problem that started appearing was jittering. The Neural Networks in play are 
     Chatting with my code, and learning how to build a Kalman Filter.
 </div>
 
-#### Putting this to the test on an inference point
 
-WIP.
-
-
-
-
-# Conclusion 
+# Wrap up 
 
 Now, as I sit in awe of my living room, I am thrilled to share the fruits of my labor. What was once a conventional flat screen has been transformed into a breathtaking 3D display, capable of projecting immersive visuals that seem to leap out of the screen and into my living space. Whether I'm watching a thrilling action movie, exploring virtual worlds, or simply enjoying the beauty of nature documentaries, the newfound depth and realism of the visuals have redefined my home entertainment experience.
