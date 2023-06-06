@@ -99,7 +99,7 @@ A note on getting the correct power supply and storage: The Nvidia Jetson Nano r
 In addition to the power supply requirements, it is important to note that the storage SD card for the Nvidia Jetson Nano should not only have a large capacity, preferably above 32GB, but also be fast. The choice of a fast SD card is crucial as it directly impacts the inference time of the system. A high-speed SD card enables quicker read and write operations, facilitating faster data access and processing, ultimately reducing the time it takes for the Nano to perform inference tasks. Therefore, selecting a storage SD card that combines ample capacity with fast transfer speeds is essential for optimizing the overall performance of the Jetson Nano.
 
 #### NVidia Hello World repository
-I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works,. I cloned the "hello world" repository, and ran  `python/examples/posenet.py` .
+I built my work on the excellent Hello World Nvidia [repository](https://github.com/dusty-nv/jetson-inference). The very first thing I did was a smoke test: I ran one of the built-in networks to validate that it works,. I cloned the "hello world" repository, and ran  `python/examples/posenet.py` with the default `resnet18-body` backbone network, `keypoints` overlay and `0.15` acceptance threshold, capturing from `/dev/video0`.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -236,7 +236,7 @@ sequenceDiagram
     FastAPI->>+ MemoryObject: I'd like to know the position of the person's head, in 3D
     MemoryObject ->>- FastAPI: The person is located here
     FastAPI ->> Unity: You are located here.
-    
+
 {% endmermaid %}
 
 #### Building a Kalman Filter with Copilot
