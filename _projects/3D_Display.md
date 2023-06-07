@@ -212,7 +212,7 @@ Determining the architecture of the networks was an interesting exercise, and fe
     </div>
 </div>
 
-I try to counterbalance massive overfitting by creating a Generator on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
+I try to counterbalance massive overfitting by creating a [simple Generator](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html) on my dataset on top of the data. The generator adds up to 1 Pixel of noise for all the features collected. I've also experimented with self-attention layers (with Layer Normalization, Dropout, and residual connections, but no attention heads), as well as with MLP architectures. It seems that an MLP architecture was suitable and reaches phenomenal outcomes. It is composed of 4 Linear Layers, 30 -> 2048 -> 1024 -> 64 -> 2, with Dropout interspread, and finish with a Sigmoid function.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
