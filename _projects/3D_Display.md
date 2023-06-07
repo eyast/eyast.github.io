@@ -193,6 +193,14 @@ To extract meaningful features for my network, I extracted the 18 Keypoints gene
 2. the Center: I determined the center location of each symmetric keypoint, offering a reference point for further analysis. 
 3. Tilt: Lastly, I derived the angular tilt of each symmetric keypoint, enabling a deeper understanding of the body pose and its orientation. By incorporating these calculated features, my network gains a comprehensive understanding of the viewer's body positioning, enhancing the accuracy and realism of the 3D display experience. Additionally, it "learns" that being at a specific distance to the TV does not necessarily mean 'looking at the TV'.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/features.png" title="Sample features calculated from Raw data." class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    For each Body Pose KeyPoints (eyes, shoulders, knees, etc..), some features are calculated. First, a binary [0, 1] determines if this feature is found in the frame (in retrospect, this was feature was completely useless since the parameter is already learnt with the true value of the feature). For each feature detected, if the feature belongs to a pair (left+right), then define the center location, the distance between both points, and the angle of rotation between both points.
+</div>
 
 #### Building a custom Neural Network to map 2D to 3D
 
