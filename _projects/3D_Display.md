@@ -213,7 +213,7 @@ To extract meaningful features for my network, I extracted the 18 Keypoints gene
     For each Body Pose KeyPoints (eyes, shoulders, knees, etc..), some features are calculated. First, a binary [0, 1] determines if this feature is found in the frame (in retrospect, this was feature was completely useless since the parameter is already learnt with the true value of the feature). For each feature detected, if the feature belongs to a pair (left+right), then define the center location, the distance between both points, and the angle of rotation between both points.
 </div>
 
-#### Building a custom Neural Network to map 2D to 3D
+#### Building a custom Neural Network to map 2D (webcam view) to 3D (location of my head, in the room)
 
 Determining the architecture of the networks was an interesting exercise, and felt a bit arbitrary. The network is a simple MLP built on Pytorch and trained on my laptop. Omitting batch size, the network takes in 30 features per frame, and maps those to two ground truths (X, and Y). Z was not required, as it was fixed at 190 cms. All values were scaled linearly to fit a range of [0, 1]. a 10-e3 learning rate is used with ADAM, and the network calculates loss according to a simple MAE calculation.
 
