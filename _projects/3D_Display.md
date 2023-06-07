@@ -185,6 +185,17 @@ I took a total of 5500 images, wearing different clothes, moving a little bit wh
     I set the room corner as the origin point - in retrospect, I should have used the Webcam as the origin point to make my code more reusable in different environments. This diagram shows a sample spot in the room and how that location is interpreted.
 </div>
 
+Data collection is an iterative process - and the data that I had collected was not properly distributed, as seen in the heatmap below. 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3ddisplay/data_distribution.png" title="Data is not acquired uniformly, leading to bias." class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Rows and Columns represent distance from the room's origin point. As you can see, some areas suffer from lack of data (for example, there's a lot of missing data 7.5 meters away from the X wall.)
+</div>
+
 #### Calculating features
 
 Processing the raw data to extract features can help the Neural network converge faster. 
