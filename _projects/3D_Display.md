@@ -118,6 +118,11 @@ I configured [SSH to work with Github on the Nano](https://docs.github.com/en/au
 
 Once the development environment is ready and a test network was ran, I looked at modifying the Dockerfil  incorporating essential modifications and installing FastAPI and some other dependencies instead of Flask. While I initially aimed to leverage VSCode DevContainers for seamless development, I encountered limitations due to the unsupported Python version within the image. However, this obstacle became an opportunity for growth as I delved into the intricacies of debugging, mastering the usage of pdb.set_trace() and remote debugging. This exercise not only enhanced my troubleshooting skills but also equipped me with invaluable insights into optimizing and fine-tuning the software environment for optimal performance.
 
+#### Calibrating the camera
+
+WIP
+
+
 #### Collecting training data
 
 With the Docker container up and running, the next step in my journey was to build the application that will serve as the foundation for collecting training data.
