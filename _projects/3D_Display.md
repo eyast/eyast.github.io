@@ -251,6 +251,11 @@ I try to counterbalance massive overfitting by creating a [simple Generator](htt
 
 WIP.
 
+
+#### Search a Hyperparameter space for the best settings
+
+WIP. 
+
 #### Creating a decoupled streaming architecture (fixing the latency problem)
 
 the application components are very synchronous: Each time a client requests an inference, A whole waterfall process has to run (capture image, extract keypoints, extract features, estimate XYZ location in room) - and this process is CPU bound. When the unity client requests the REST API once per Frame, the code on the Nano quickly crashes after few seconds.
