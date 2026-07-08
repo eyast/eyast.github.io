@@ -1,6 +1,6 @@
 ---
 title: "On the Lottery"
-description: "A close-reading essay written for Harvard's EXPO 15 — Fundamentals of Academic Writing."
+description: "An essay on the lottery, written for Harvard's EXPO 15 — Fundamentals of Academic Writing."
 ---
 
 ## About this paper
