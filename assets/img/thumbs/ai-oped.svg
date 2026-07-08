@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f6ed"/>
+  <!-- broadsheet -->
+  <rect x="340" y="80" width="600" height="560" rx="6" fill="#fdfcf9" stroke="#0d042b" stroke-width="4"/>
+  <!-- masthead -->
+  <path d="M390,150 h500" stroke="#0d042b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M470,185 h340" stroke="#3b364c" stroke-width="4" stroke-linecap="round"/>
+  <!-- headline: AI -->
+  <text x="390" y="310" font-family="DM Sans, sans-serif" font-size="110" font-weight="700" fill="#0d042b" letter-spacing="-4">AI?</text>
+  <rect x="600" y="230" width="290" height="90" rx="4" fill="#faebd7"/>
+  <g stroke="#3b364c" stroke-width="5" stroke-linecap="round">
+    <path d="M620,258 h250 M620,285 h250"/>
+  </g>
+  <!-- columns -->
+  <g stroke="#3b364c" stroke-width="5" stroke-linecap="round">
+    <path d="M390,370 h230 M390,400 h230 M390,430 h230 M390,460 h180 M390,520 h230 M390,550 h150"/>
+    <path d="M660,370 h230 M660,400 h230 M660,430 h180 M660,490 h230 M660,520 h230 M660,550 h200"/>
+  </g>
+</svg>

@@ -18,10 +18,6 @@ kaggle_username: etaifour
 nav_links:
   - title: Home
     url: /
-  - title: Projects
-    url: /projects/
-  - title: Writing
-    url: /writing/
   - title: About
     url: /about/
   - title: Contact
@@ -30,13 +26,11 @@ nav_links:
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /writing/:title/
 
 sass:
   style: compressed
 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 

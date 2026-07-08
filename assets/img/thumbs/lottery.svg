@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f6ed"/>
+  <!-- the black box -->
+  <g>
+    <path d="M440,300 L640,240 L840,300 L640,360 Z" fill="#251654" stroke="#0d042b" stroke-width="4"/>
+    <path d="M440,300 L640,360 L640,560 L440,500 Z" fill="#0d042b"/>
+    <path d="M840,300 L640,360 L640,560 L840,500 Z" fill="#150c32" stroke="#0d042b" stroke-width="2"/>
+    <!-- slot -->
+    <path d="M590,295 L690,265" stroke="#f7f6ed" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <!-- paper slips -->
+  <g stroke="#0d042b" stroke-width="3">
+    <rect x="290" y="150" width="120" height="90" rx="4" fill="#fdfcf9" transform="rotate(-14 350 195)"/>
+    <rect x="560" y="90" width="120" height="90" rx="4" fill="#fdfcf9" transform="rotate(6 620 135)"/>
+    <rect x="850" y="150" width="120" height="90" rx="4" fill="#fdfcf9" transform="rotate(15 910 195)"/>
+  </g>
+  <!-- the marked slip -->
+  <circle cx="622" cy="140" r="17" fill="#0d042b"/>
+  <!-- odds -->
+  <text x="80" y="640" font-family="Fira Mono, monospace" font-size="34" fill="#3b364c">P(fair) → 0</text>
+</svg>
