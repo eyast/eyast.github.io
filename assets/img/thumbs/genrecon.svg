@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f6ed"/>
+  <!-- one-point-perspective room wireframe -->
+  <g stroke="#0d042b" stroke-width="4" fill="none" stroke-linejoin="round">
+    <rect x="440" y="240" width="400" height="240" fill="#fdfcf9"/>
+    <path d="M120,60 L440,240 M1160,60 L840,240 M120,660 L440,480 M1160,660 L840,480"/>
+    <path d="M120,60 L1160,60 M120,60 L120,660 M1160,60 L1160,660 M120,660 L1160,660"/>
+  </g>
+  <!-- reconstruction chunks -->
+  <g fill="#faebd7" stroke="#0d042b" stroke-width="4" opacity="0.92">
+    <rect x="200" y="320" width="190" height="190" rx="6"/>
+    <rect x="330" y="410" width="190" height="190" rx="6"/>
+    <rect x="740" y="300" width="190" height="190" rx="6"/>
+  </g>
+  <g stroke="#3b364c" stroke-width="3" fill="none">
+    <path d="M295,415 l60,60 M330,415 l60,60 M365,415 l60,60"/>
+    <path d="M835,395 l60,60 M870,395 l60,60"/>
+  </g>
+  <text x="80" y="120" font-family="Fira Mono, monospace" font-size="34" fill="#3b364c">photos → chunks → mesh</text>
+</svg>

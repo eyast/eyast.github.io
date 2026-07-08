@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f6ed"/>
+  <!-- stack of documents -->
+  <g stroke="#0d042b" stroke-width="4">
+    <rect x="150" y="180" width="280" height="380" rx="8" fill="#fdfcf9" transform="rotate(-6 290 370)"/>
+    <rect x="190" y="160" width="280" height="380" rx="8" fill="#fdfcf9" transform="rotate(-2 330 350)"/>
+    <rect x="230" y="150" width="280" height="380" rx="8" fill="#fdfcf9"/>
+  </g>
+  <g stroke="#3b364c" stroke-width="6" stroke-linecap="round">
+    <path d="M270,220 h200 M270,270 h200 M270,320 h140 M270,370 h200 M270,420 h170 M270,470 h110"/>
+  </g>
+  <!-- arrow -->
+  <g stroke="#0d042b" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M580,360 H760"/>
+    <path d="M730,330 L760,360 L730,390"/>
+  </g>
+  <!-- summary document -->
+  <rect x="820" y="230" width="260" height="260" rx="8" fill="#faebd7" stroke="#0d042b" stroke-width="4"/>
+  <g stroke="#0d042b" stroke-width="6" stroke-linecap="round">
+    <path d="M860,300 h180 M860,350 h140 M860,400 h100"/>
+  </g>
+  <text x="80" y="110" font-family="Fira Mono, monospace" font-size="34" fill="#3b364c">n docs → 1 summary</text>
+</svg>

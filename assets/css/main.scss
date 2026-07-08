@@ -1,15 +1,11 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
-@charset "utf-8";
-
-// Dimensions
-$max-content-width: {{ site.max_width }};
-
-@import
-  "variables",
-  "themes",
-  "layout",
-  "base",
-  "distill"
-;
+@import "variables";
+@import "base";
+@import "header";
+@import "footer";
+@import "hero";
+@import "cards";
+@import "project";
+@import "prose";
+@import "cta";

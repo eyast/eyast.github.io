@@ -1,0 +1,64 @@
+---
+layout: default
+---
+<article class="project">
+  <header class="project-header">
+    <div class="container container-narrow">
+      <p class="project-kicker">{{ page.subtitle }}</p>
+      <h1 class="project-title">{{ page.title }}</h1>
+      {% if page.description %}<p class="project-lede">{{ page.description }}</p>{% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+  <div class="container">
+    <figure class="project-hero-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+    </figure>
+  </div>
+  {% endif %}
+
+  <div class="container project-body-wrap">
+    <aside class="project-meta">
+      {% if page.affiliation %}
+      <div class="meta-item"><p class="meta-label">Context</p><p>{{ page.affiliation }}</p></div>
+      {% endif %}
+      {% if page.year %}
+      <div class="meta-item"><p class="meta-label">Year</p><p>{{ page.year }}</p></div>
+      {% endif %}
+      {% if page.methods %}
+      <div class="meta-item"><p class="meta-label">Methods</p><p>{{ page.methods }}</p></div>
+      {% endif %}
+      {% if page.tools %}
+      <div class="meta-item"><p class="meta-label">Tools</p><p>{{ page.tools }}</p></div>
+      {% endif %}
+      {% if page.links %}
+      <div class="meta-item"><p class="meta-label">Links</p>
+        <ul class="meta-links">
+        {% for link in page.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </aside>
+    <div class="project-body prose">
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="container container-narrow project-pagination">
+    {% assign sorted = site.projects | sort: "order" %}
+    {% for p in sorted %}
+      {% if p.url == page.url %}
+        {% assign idx = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+    {% assign prev_idx = idx | minus: 1 %}
+    {% assign next_idx = idx | plus: 1 %}
+    {% if idx > 0 %}{% assign prev = sorted[prev_idx] %}<a class="pager pager-prev" href="{{ prev.url | relative_url }}">← {{ prev.title }}</a>{% endif %}
+    {% if next_idx < sorted.size %}{% assign next = sorted[next_idx] %}<a class="pager pager-next" href="{{ next.url | relative_url }}">{{ next.title }} →</a>{% endif %}
+  </div>
+</article>
+
+{% include cta.html %}

@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">{{ page.hero_title | default: site.description }}</h1>
+    {% if page.hero_text %}<p class="hero-text">{{ page.hero_text }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Featured projects</h2>
+      <a class="section-link" href="{{ '/projects/' | relative_url }}">View all projects →</a>
+    </div>
+    <div class="project-grid">
+      {% assign featured = site.projects | where_exp: "p", "p.featured == true" | sort: "order" %}
+      {% for project in featured limit: 4 %}
+        {% include project-card.html project=project %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Recent writing</h2>
+      <a class="section-link" href="{{ '/writing/' | relative_url }}">View all writing →</a>
+    </div>
+    <div class="post-grid">
+      {% for post in site.posts limit: 3 %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ content }}
+
+{% include cta.html %}

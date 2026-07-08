@@ -1,0 +1,45 @@
+.hero {
+  padding: 72px 0 40px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 40px 0 24px;
+  }
+}
+
+.hero-title {
+  font-size: 86px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  max-width: 20ch;
+  margin-bottom: 0.35em;
+
+  strong {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--bg-3);
+    text-decoration-thickness: 8px;
+    text-underline-offset: 6px;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 46px;
+    letter-spacing: -1px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+}
+
+.hero-text {
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 56ch;
+  margin: 0;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 20px;
+  }
+}

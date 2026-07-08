@@ -1,0 +1,132 @@
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 32px;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.project-card {
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      text-decoration: none;
+
+      img {
+        opacity: 0.8;
+      }
+
+      .project-card-title {
+        text-decoration: underline;
+        text-decoration-color: var(--bg-3);
+        text-decoration-thickness: 3px;
+      }
+    }
+  }
+}
+
+.project-card-image {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--bg-2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s ease;
+  }
+}
+
+.project-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-3);
+
+  span {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--ink);
+    opacity: 0.35;
+  }
+}
+
+.project-card-title {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin: 0 0 2px;
+}
+
+.project-card-client {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  margin: 0;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-card {
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      text-decoration: none;
+
+      .post-card-title {
+        text-decoration: underline;
+        text-decoration-color: var(--bg-3);
+        text-decoration-thickness: 3px;
+      }
+    }
+  }
+}
+
+.post-card-date {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.post-card-title {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+
+.post-card-excerpt {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.read-more {
+  margin-top: auto;
+  font-size: 15px;
+  font-weight: 500;
+}

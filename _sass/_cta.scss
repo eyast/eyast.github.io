@@ -1,0 +1,35 @@
+.cta {
+  background: var(--bg-2);
+  padding: 64px 0;
+  margin-top: var(--section-padding);
+
+  @media (max-width: $breakpoint-md) {
+    padding: 40px 0;
+    margin-top: calc(var(--section-padding) / 2);
+  }
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0;
+  }
+
+  p {
+    color: var(--muted);
+    margin: 0;
+    flex: 1 1 30ch;
+  }
+}
+
+.cta + .site-footer {
+  margin-top: 0;
+}

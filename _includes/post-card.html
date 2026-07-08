@@ -1,0 +1,8 @@
+<article class="post-card">
+  <a href="{{ post.url | relative_url }}">
+    {% if post.show_date %}<p class="post-card-date">{{ post.date | date: "%B %-d, %Y" }}</p>{% endif %}
+    <h3 class="post-card-title">{{ post.title }}</h3>
+    <p class="post-card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+    <span class="read-more">Read more →</span>
+  </a>
+</article>

@@ -1,0 +1,143 @@
+.project-header,
+.post-header,
+.page-header {
+  padding: 56px 0 24px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 32px 0 16px;
+  }
+}
+
+.project-kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.project-title,
+.post-title,
+.page-title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -2px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+}
+
+.project-lede,
+.post-lede,
+.page-lede {
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.project-hero-image {
+  margin: 24px 0 0;
+
+  img {
+    width: 100%;
+    border-radius: var(--card-radius);
+  }
+}
+
+.project-body-wrap {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 64px;
+  padding-top: 48px;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 32px;
+  }
+}
+
+.project-meta {
+  font-size: 15px;
+
+  .meta-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .meta-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    a {
+      text-decoration: underline;
+      text-decoration-color: var(--bg-3);
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+.project-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 56px;
+
+  .pager {
+    font-weight: 500;
+  }
+
+  .pager-next {
+    margin-left: auto;
+    text-align: right;
+  }
+}
+
+.post-hero-image {
+  margin: 16px 0 0;
+
+  img {
+    width: 100%;
+    border-radius: var(--card-radius);
+  }
+}
+
+.post-date {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.post-body,
+.page-body {
+  padding-top: 16px;
+}

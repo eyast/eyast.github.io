@@ -1,0 +1,8 @@
+{% if include.youtube_id %}
+<div class="video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ include.youtube_id }}" title="{{ include.title | escape }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+{% if include.caption %}<p class="video-caption">{{ include.caption }}</p>{% endif %}
+{% else %}
+<div class="placeholder-note">Video placeholder — <em>{{ include.title }}</em>. Add the YouTube ID to embed it.</div>
+{% endif %}
