@@ -29,6 +29,6 @@ Digital twins of active construction sites require an accurate reconstruction of
 
 Experiments use the Hilti SLAM Challenge 2023 platform: five synchronized Alphasense fisheye cameras with near-omnidirectional coverage, a co-mounted IMU, and multi-channel LiDAR, recorded on active construction sites. A data-engineering pipeline extracts the ROS bag recordings into per-topic, timestamp-aligned frames, and the static laser scans are converted into a dense volumetric ground truth against which pose and depth predictions are evaluated.
 
-## Status
+## Full paper
 
-<div class="placeholder-note">Placeholder — the final report PDF will be added here.</div>
+The paper is available [as a PDF](/assets/papers/mmvo.pdf).
