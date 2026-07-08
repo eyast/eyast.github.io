@@ -5,7 +5,7 @@ permalink: /about/
 description: Software architect, data science graduate, and enthusiast of everything data, probability, cloud, and food.
 ---
 
-![Eyas Taifour](/assets/img/profile_pic.jpg){: .about-portrait }
+![Eyas Taifour](/assets/img/profile_photo_new.jpg){: .about-portrait }
 
 I am a Software Architect in the Solutions Acceleration Team — a division within the Industry Solutions organization — at Microsoft. It's a fancy way to say that I build patterns and software artifacts with reusability in mind, typically to help advance the adoption of cloud technologies at scale in large organizations.
 
