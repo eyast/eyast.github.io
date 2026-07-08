@@ -3,8 +3,7 @@ title: "GenRecon: Indoor Scene Reconstruction with Generative Priors"
 subtitle: "3D Reconstruction · Generative Models"
 description: "Reconstructing a complete, relightable PBR mesh of an indoor scene from a sparse set of photographs, by casting reconstruction as conditional 3D generation."
 image: /assets/img/thumbs/genrecon.svg
-featured: true
-order: 2
+order: 4
 year: 2026
 affiliation: Independent implementation study
 methods: "Conditional 3D generation, structure-from-motion, LoRA fine-tuning, chunk-wise generation and registration"

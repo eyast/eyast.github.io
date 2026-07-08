@@ -3,7 +3,7 @@ title: "AI — The Next Public Health Crisis?"
 subtitle: "Academic Writing · Harvard EXPO 15"
 description: "An op-ed arguing that chatbots should be regulated by an independent body, written for Harvard's EXPO 15 — Fundamentals of Academic Writing."
 image: /assets/img/thumbs/ai-oped.svg
-order: 6
+order: 5
 year: 2025
 affiliation: Harvard EXPO 15 (Fundamentals of Academic Writing)
 methods: "Argumentation, rhetorical analysis, logical outlining"

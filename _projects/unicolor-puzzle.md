@@ -3,8 +3,7 @@ title: "Shape-Only Assembly of a Unicolor 2,000-Piece Jigsaw Puzzle"
 subtitle: "Computer Vision · Combinatorial Search"
 description: "A study in constraint satisfaction under minimal, noisy information: solving a single-color jigsaw puzzle using only the geometry of its edges."
 image: /assets/img/puzzle_final/thumbnail.jpg
-featured: true
-order: 1
+order: 3
 year: 2022
 affiliation: Independent study
 methods: "Contour detection, feature engineering, conditional probability, k-means clustering"

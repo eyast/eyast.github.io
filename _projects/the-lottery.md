@@ -3,7 +3,7 @@ title: "Bureaucracy, Compliance and Statistical Improbability in Shirley Jackson
 subtitle: "Academic Writing · Harvard EXPO 15"
 description: "A literary analysis arguing that the village lottery in Jackson's story is not random at all — supported by a Monte Carlo simulation of the village."
 image: /assets/img/thumbs/lottery.svg
-order: 7
+order: 6
 year: 2025
 affiliation: Harvard EXPO 15 (Fundamentals of Academic Writing)
 methods: "Close reading, source synthesis, Monte Carlo simulation, agent-based modeling"

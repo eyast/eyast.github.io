@@ -3,8 +3,7 @@ title: "MMVO: Visual-Inertial 3D Reconstruction in Challenging Industrial Enviro
 subtitle: "Deep Learning for Computer Vision · Stanford CS231N"
 description: "Making feed-forward 3D reconstruction survive construction sites: an IMU side network that corrects camera pose, and a diffusion refiner that sharpens depth — without fine-tuning the backbone or using LiDAR at inference."
 image: /assets/img/mmvo/vggt-betterdepth-comparison.png
-featured: true
-order: 3
+order: 1
 year: 2026
 affiliation: Stanford University, CS231N (group project)
 methods: "Visual-inertial fusion, cross-attention conditioning, 6-DOF pose regression, conditional latent diffusion, point-cloud registration"
