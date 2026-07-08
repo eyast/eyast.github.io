@@ -88,6 +88,12 @@
 .content-figure {
   margin: 1.75em 0;
 
+  a {
+    display: block;
+    text-decoration: none;
+    cursor: zoom-in;
+  }
+
   img {
     margin: 0;
     width: 100%;
